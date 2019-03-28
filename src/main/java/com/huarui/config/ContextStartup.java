@@ -2,6 +2,8 @@ package com.huarui.config;
 
 import com.huarui.bean.SiteOptions;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -17,6 +19,8 @@ import java.util.Map;
 @Component
 public class ContextStartup implements ApplicationRunner, ServletContextAware {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContextStartup.class);
+
     private ServletContext servletContext;
 
     @Autowired
@@ -26,20 +30,22 @@ public class ContextStartup implements ApplicationRunner, ServletContextAware {
     //实现ServletContextAware 可获得上下文 servletContext
     @Override
     public void setServletContext(ServletContext servletContext) {
-        System.out.println("获得上下文");
+        LOGGER.info("获得上下文");
         this.servletContext = servletContext;
     }
 
     //实现ApplicationRunner   可在springboot应用启动后进行初始化操作
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
-        System.out.println("sprinboot 启动啦");
+        LOGGER.info("sprinboot 启动啦");
 
         reloadOptions(true);
     }
 
     //刷新
     public void reloadOptions(boolean startup){
+        LOGGER.info("servletContext reload");
+
         Map<String, String> map = new HashMap<>();
 
         map.put("key1","val1");
