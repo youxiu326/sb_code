@@ -7,11 +7,21 @@ import org.reflections.Reflections;
 import java.util.HashMap;
 import java.util.Set;
 
+/**
+ * 【工厂类】
+ * 通过指定扫码路径读取带有自定义注解Pay的类
+ * <br>并将全类名保存至map中，格式为["pay的value":"类的全类名"]
+ * <br> 定义了creator方法，传入支付类型 返回 指定支付对象
+ */
 public class StrategyFactory {
 
 
     private static StrategyFactory factory = new StrategyFactory();
 
+    /**
+     * 单例
+     * @return
+     */
     public static StrategyFactory getInstance(){
         return factory;
     }

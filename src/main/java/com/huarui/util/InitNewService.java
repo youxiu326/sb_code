@@ -8,6 +8,12 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 import java.lang.reflect.Field;
 
+/**
+ *
+ * <br>使用反射生成的对象并未被spring管理，
+ * <br>无法使用注解注入spring管理的对象，
+ * <br>实现该类则可以注入spring管理的对象
+ */
 @Service
 public class  InitNewService implements ApplicationContextAware {
 

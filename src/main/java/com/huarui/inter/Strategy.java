@@ -2,6 +2,10 @@ package com.huarui.inter;
 
 import java.math.BigDecimal;
 
+/**
+ * 支付需实现该接口
+ * 接口编程:
+ */
 public interface Strategy {
 
     /**
