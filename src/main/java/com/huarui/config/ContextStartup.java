@@ -1,19 +1,17 @@
 package com.huarui.config;
 
 import com.huarui.bean.SiteOptions;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ServletContextAware;
 
 import javax.servlet.ServletContext;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Component
@@ -25,6 +23,9 @@ public class ContextStartup implements ApplicationRunner, ServletContextAware {
 
     @Autowired
     private SiteOptions siteOptions;
+
+    @Value("${site.version}")
+    public String userName;
 
 
     //实现ServletContextAware 可获得上下文 servletContext
@@ -38,7 +39,6 @@ public class ContextStartup implements ApplicationRunner, ServletContextAware {
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
         LOGGER.info("sprinboot 启动啦");
-
         reloadOptions(true);
     }
 

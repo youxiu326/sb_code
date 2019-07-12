@@ -33,8 +33,11 @@ public class StrategyFactory {
     }
 
     public Strategy creator(int type) throws Exception {
+        //取得全类名
         String className = sourceMap.get(type);
+        //取得类对象
         Class  clazz= Class.forName(className);
+        //反射创建对象
         return (Strategy) clazz.newInstance();
     }
 

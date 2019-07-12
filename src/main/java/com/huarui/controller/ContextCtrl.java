@@ -22,7 +22,6 @@ public class ContextCtrl {
     @RequestMapping("/startUp")
     @ResponseBody
     public String startUp(){
-
         return siteOptions.getVersion()+siteOptions.getOptions().toString();
 
     }
